@@ -33,12 +33,28 @@
       <h2>Add Transaction</h2>
       <form id="transaction-form">
         <input type="text" id="description" placeholder="Description" required />
-        <input type="text" id="category" placeholder="Category" required /> <!-- ✅ Added category -->
-        <input type="number" id="amount" placeholder="Amount" required />
-        <select id="type">
+
+        <select id="type" required>
           <option value="income">Income</option>
           <option value="expense">Expense</option>
         </select>
+
+        <select id="category" required>
+          <option value="" disabled selected>Select Category</option>
+          <!-- Income categories -->
+          <option value="Salary" data-type="income">Salary</option>
+          <option value="Freelance" data-type="income">Freelance</option>
+          <option value="Investment" data-type="income">Investment</option>
+
+          <!-- Expense categories -->
+          <option value="Food" data-type="expense">Food</option>
+          <option value="Transport" data-type="expense">Transport</option>
+          <option value="Entertainment" data-type="expense">Entertainment</option>
+          <option value="Bills" data-type="expense">Bills</option>
+        </select>
+
+        <input type="number" id="amount" placeholder="Amount" required />
+
         <button type="submit">Add</button>
       </form>
     </section>
@@ -54,7 +70,7 @@
         <thead>
           <tr>
             <th>Description</th>
-            <th>Category</th> <!-- ✅ Added category column -->
+            <th>Category</th>
             <th>Amount (USD)</th>
             <th>Type</th>
             <th>Date</th>
