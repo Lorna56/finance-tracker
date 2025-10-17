@@ -1,0 +1,120 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #c2e9fb 0%, #a1c4fd 100%);
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.dashboard {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  padding: 30px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  margin: 0;
+  color: #1b5e20;
+}
+
+.summary-cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.card {
+  flex: 1;
+  min-width: 200px;
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.income {
+  background-color: #43a047;
+}
+
+.expense {
+  background-color: #e53935;
+}
+
+.balance {
+  background-color: #1e88e5;
+}
+
+.form-section {
+  margin-top: 30px;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+form input, form select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+}
+
+form button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #43a047;
+}
+
+.chart-section {
+  margin: 40px 0;
+}
+
+.table-section {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f5f5f5;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+@media (max-width: 600px) {
+  .summary-cards {
+    flex-direction: column;
+  }
+}
