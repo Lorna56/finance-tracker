@@ -1,79 +1,108 @@
-body {
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #c2e9fb 0%, #a1c4fd 100%);
-  margin: 0;
-  padding: 0;
-  color: #333;
-}
-
-.dashboard {
-  max-width: 900px;
-  margin: 40px auto;
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-  padding: 30px;
-}
-
-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-header h1 {
-  margin: 0;
-  color: #1b5e20;
-}
-
-.summary-cards {
+/* Action buttons styling */
+.actions {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: scale(1.1);
+}
+
+/* Material Icons styling */
+.material-icons {
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* Icon fallback styling */
+.icon-fallback {
+  display: inline-block;
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* Modal overlay & animation */
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  opacity: 0;
+  animation: fadeIn 0.2s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Modal content */
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  animation: slideIn 0.2s forwards;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Form styling in modal */
+#edit-form {
+  display: flex;
+  flex-direction: column;
   gap: 15px;
 }
 
-.card {
-  flex: 1;
-  min-width: 200px;
-  padding: 15px;
-  border-radius: 15px;
-  text-align: center;
-  color: white;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+#edit-form label {
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
-.income {
-  background-color: #43a047;
-}
-
-.expense {
-  background-color: #e53935;
-}
-
-.balance {
-  background-color: #1e88e5;
-}
-
-.form-section {
-  margin-top: 30px;
-  text-align: center;
-}
-
-form {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
-
-form input, form select {
+#edit-form input,
+#edit-form select {
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 1em;
 }
 
-form button {
+#edit-form button {
   background-color: #4caf50;
   color: white;
   border: none;
@@ -82,39 +111,128 @@ form button {
   cursor: pointer;
 }
 
-form button:hover {
-  background-color: #43a047;
+#edit-form button[type="button"] {
+  background-color: #f44336;
 }
 
-.chart-section {
-  margin: 40px 0;
-}
-
-.table-section {
-  overflow-x: auto;
-}
-
-table {
+/* Delete confirmation modal */
+.delete-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  border-collapse: collapse;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  opacity: 0;
+  animation: fadeIn 0.2s forwards;
 }
 
-th, td {
-  padding: 12px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
+.delete-modal-content {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: slideIn 0.2s forwards;
 }
 
-th {
+.delete-modal-header {
   background-color: #f5f5f5;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #eee;
 }
 
-tr:hover {
-  background-color: #f1f1f1;
+.delete-modal-header h2 {
+  margin: 0;
+  color: #333;
 }
 
-@media (max-width: 600px) {
-  .summary-cards {
-    flex-direction: column;
-  }
+.delete-icon {
+  font-size: 24px;
+}
+
+.delete-modal-body {
+  padding: 20px;
+}
+
+.transaction-preview {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 15px 0;
+}
+
+.transaction-preview p {
+  margin: 5px 0;
+}
+
+.warning-text {
+  color: #d32f2f;
+  font-weight: 500;
+  margin-top: 15px;
+}
+
+.delete-modal-footer {
+  padding: 15px 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  border-top: 1px solid #eee;
+}
+
+.cancel-btn {
+  background-color: #f5f5f5;
+  color: #333;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.cancel-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.confirm-delete-btn {
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.confirm-delete-btn:hover {
+  background-color: #b71c1c;
+}
+
+/* Toast notification (for success messages) */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 2000;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
 }
